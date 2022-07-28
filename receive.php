@@ -53,7 +53,7 @@
 
   echo nl2br(htmlspecialchars($_POST["howto"], ENT_QUOTES));
   echo "<br>";
-  ?>
+  ?>a
 </body>
 
 </html>
