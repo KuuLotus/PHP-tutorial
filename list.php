@@ -12,6 +12,19 @@ try {
   echo "<th>料理名</th><th>予算</th><th>難易度</th>" . PHP_EOL;
   echo "</tr>" . PHP_EOL;
   echo "</table>" . PHP_EOL;
+  foreach ($result as $row) {
+    echo "<tr>" . PHP_EOL;
+    echo "<td>" . htmlspecialchars($row["recipe_name"], ENT_QUOTES) . "</td>" . PHP_EOL;
+    echo "<td>" . htmlspecialchars($row["budget"], ENT_QUOTES) . "</td>" . PHP_EOL;
+    echo "<td>" .
+      match ($row["difficulty"]) {
+        "1" => "簡単",
+        "2" => "普通",
+        "3" => "難しい",
+      }
+      . "</td>" . PHP_EOL;
+    echo "</tr>" . PHP_EOL;
+  }
   $dbh = null;
 } catch (PDOException $e) {
   echo "エラー発生: " . htmlspecialchars($e->getMessage(), ENT_QUOTES) . "<br>";
